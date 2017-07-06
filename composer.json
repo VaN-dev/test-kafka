@@ -1,0 +1,33 @@
+{
+    "name": "dmi/test-kafka",
+    "description": "Kafka Consumer framework for Mention",
+    "authors": [
+        {
+            "name": "David Micheau",
+            "email": "david.micheau@upnbiz.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "repositories": {
+        "php-rdkafka": {
+            "type": "package",
+            "package": {
+                "name": "arnaud-lb/php-rdkafka",
+                "version": "1.0",
+                "source": {
+                    "url": "https://github.com/arnaud-lb/php-rdkafka.git",
+                    "type": "git",
+                    "reference": "origin/master"
+                }
+            }
+        }
+    },
+    "require": {
+        "arnaud-lb/php-rdkafka":"1.0",
+        "symfony/var-dumper": "^3.3"
+    }
+}
