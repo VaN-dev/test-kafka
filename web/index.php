@@ -2,23 +2,38 @@
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
-use Model\AbstractConsumer;
-use Model\Consumer;
-use Model\Partition;
-use Model\Topic;
+use Model\Consumer\BaseConsumer;
+use Model\Topic\BaseTopic;
+use Model\Topic\Configuration\StorageAwareTopicConfiguration;
 
-$partition = new Partition('partition-1');
-$topic = new Topic();
-$topic
-    ->addPartition($partition)
-    ->setCallback(function () {
-        echo 'I\'m a callback!';
-    })
-;
+try {
+    // init consumer
+    $consumer = new BaseConsumer();
+    $consumer->addBrokers('127.0.0.1:9092');
 
-$consumer = new Consumer(AbstractConsumer::FAILURE_BEHAVIOR_EXCEPTION);
-$consumer->addTopic($topic);
+    // loading conf
+    $configuration = new StorageAwareTopicConfiguration();
+    $configuration->setStorageMethod('file');
 
+    // loading topics
+    $topic1 = new BaseTopic('topic-test-callback', [0], $configuration);
+    $topic1->setCallback(function () {
+        echo nl2br(PHP_EOL . '<em>-- I\'m a callback!</em>' . PHP_EOL);
+    });
+    $consumer->addTopic($topic1);
+
+    // uncomment the following line to start a queue consumption
+    // $consumer->addTopic(new BaseTopic('topic-test', [0]));
+
+    // consuming
+    $consumer->run();
+} catch (\Exception $e) {
+    echo $e->getMessage();
+}
+
+echo '<h1>Kafka Consumer Framework</h1>';
+echo '<h2>Concrete Consumer</h2>';
 dump($consumer);
 
-echo $consumer->getFailureBehavior();
+echo '<h2>Available methods</h2>';
+dump(get_class_methods($consumer));

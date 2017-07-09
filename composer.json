@@ -27,7 +27,9 @@
         }
     },
     "require": {
-        "arnaud-lb/php-rdkafka":"1.0",
         "symfony/var-dumper": "^3.3"
+    },
+    "require-dev": {
+        "kwn/php-rdkafka-stubs": "^1.0.2"
     }
 }

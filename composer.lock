@@ -4,19 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7279ef42e55d714b18a64e8aceb0d4ab",
-    "content-hash": "f7267021dcfc91acce54de1cc8cc2f15",
+    "hash": "17a27e4e63816cdd8d6cd01ccc1e12eb",
+    "content-hash": "e9fe90524cf0b9caed96f30d238b187a",
     "packages": [
-        {
-            "name": "arnaud-lb/php-rdkafka",
-            "version": "1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/arnaud-lb/php-rdkafka.git",
-                "reference": "origin/master"
-            },
-            "type": "library"
-        },
         {
             "name": "symfony/polyfill-mbstring",
             "version": "v1.4.0",
@@ -145,7 +135,42 @@
             "time": "2017-07-05 13:02:37"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "kwn/php-rdkafka-stubs",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kwn/php-rdkafka-stubs.git",
+                "reference": "c35103160ea21cc0e6861fbee4124a8108367213"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kwn/php-rdkafka-stubs/zipball/c35103160ea21cc0e6861fbee4124a8108367213",
+                "reference": "c35103160ea21cc0e6861fbee4124a8108367213",
+                "shasum": ""
+            },
+            "require": {
+                "ext-rdkafka": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Karol Wnuk",
+                    "email": "k.wnuk@ascetic.pl"
+                }
+            ],
+            "description": "Rdkafka extension stubs for your IDE",
+            "time": "2017-03-26 10:14:53"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],
